@@ -28,7 +28,7 @@ on:
 env:
   TZ: 'Asia/Shanghai'
   UPLOAD_FIRMWARE: true
-  UPLOAD_WETRANSFER: true
+  UPLOAD_WETRANSFER: false
   UPLOAD_RELEASE: true
   IFMAKEOP: ${{github.event.inputs.ifmake}}
 jobs:
