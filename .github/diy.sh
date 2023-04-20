@@ -40,17 +40,21 @@ sed -i '$d' target/linux/armvirt/image/Makefile
 echo -e 'define Device/Phicomm-n1
 DEVICE_MODEL := Phicomm-n1
   DEVICE_PACKAGES := \
-    perl perlbase-base perbase-file perl-http-date perlbase-getopt perlbase-time perlbase-unicode perlbase-utf8 \
-    blkid fdisk lsblk parted \
-    attr btrfs-progs chattr dosfstools e2fsprogs f2fs-tools f2fsck lsattr mkf2fs xfs-fsck xfs-mkfs \
-    kmod-brcmfmac kmod-brcmutil kmod-cfg80211 kmod-mac80211 hostpad-common iw wpa-cli wpad-openssl\
-    kmod-fs-ext4 kmod-fs-vfat kmod-fs-exfat libzstd \
-    kmod-usb-storage kmod-usb-storage-extras kmod-usb-storage-uas \
-    kmod-usb-net kmod-usb-net-asix-ax88179 kmod-usb-net-rtl8150 kmod-usb-net-rtl8152 \
-    libattr  cfdisk  resize2fs tune2fs pv unzip \
-    lscpu htop iperf3 curl lm-sensors \
-    bsdtar pigz \
-    gawk getopt losetup tar uuidgen bash bzip2 vim
+	perl perlbase-base perbase-file perl-http-date perlbase-getopt perlbase-time perlbase-unicode perlbase-utf8 \
+	blkid fdisk lsblk parted \
+	attr btrfs-progs chattr dosfstools e2fsprogs f2fs-tools f2fsck lsattr mkf2fs xfs-fsck xfs-mkfs \
+	bsdtar pigz \
+	bash \
+	gawk getopt losetup tar uuidgen bzip2 vim \
+	acpid \
+	kmod-brcmfmac kmod-brcmutil kmod-cfg80211 kmod-mac80211 hostpad-common iw wpa-cli wpad-basic \
+	Python3-flask  Python3-flask-httpauth Python3-flask-login Python3-flask-seasurf Python3-flask-session \
+	Python3-flask-socketio Python3-passlib Python3-pyserial Python3-sqlite3 Python3-xml Python3-requests \
+	kmod-fs-ext4 kmod-fs-vfat kmod-fs-exfat libzstd \
+	kmod-usb-storage kmod-usb-storage-extras kmod-usb-storage-uas \
+	kmod-usb-net kmod-usb-net-asix-ax88179 kmod-usb-net-rtl8150 kmod-usb-net-rtl8152 \
+	libattr  cfdisk  resize2fs tune2fs pv unzip \
+	lscpu htop iperf3 curl lm-sensors 
 endef
 ifeq ($(SUBTARGET),64)
   TARGET_DEVICES += Phicomm-n1
