@@ -47,7 +47,7 @@ DEVICE_MODEL := Phicomm-n1
 	bash \
 	gawk getopt losetup tar uuidgen bzip2 vim \
 	acpid \
-	kmod-brcmfmac kmod-brcmutil kmod-cfg80211 kmod-mac80211 hostpad-common iw wpa-cli wpad-basic \
+	kmod-brcmfmac kmod-brcmutil kmod-cfg80211 kmod-mac80211 hostpad-common iw wpa-cli wpad-openssl \
 	Python3-flask  Python3-flask-httpauth Python3-flask-login Python3-flask-seasurf Python3-flask-session \
 	Python3-flask-socketio Python3-passlib Python3-pyserial Python3-sqlite3 Python3-xml Python3-requests \
 	kmod-fs-ext4 kmod-fs-vfat kmod-fs-exfat libzstd \
