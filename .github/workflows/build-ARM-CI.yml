@@ -21,7 +21,7 @@ on:
       - '.github/diy.sh'
       - '.github/workflows/build-ARM-CI.yml'
   schedule:
-    - cron: 0 8 * * 3,6
+    - cron: 0 0 * * 3,6
   watch:
     types: started
     
