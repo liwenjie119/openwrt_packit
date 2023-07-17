@@ -7,7 +7,8 @@ init_work_env
 
 PLATFORM=rockchip
 SOC=rk3588
-BOARD=rock5b
+BOARD=h88k-v3
+
 SUBVER=$1
 
 if [ -n "$RK3588_KERNEL_VERSION" ];then
@@ -31,8 +32,7 @@ OPWRT_ROOTFS_GZ=$(get_openwrt_rootfs_archive ${PWD})
 check_file ${OPWRT_ROOTFS_GZ}
 echo "Use $OPWRT_ROOTFS_GZ as openwrt rootfs!"
 
-# Target Image
-TGT_IMG="${WORK_DIR}/openwrt_${SOC}_${BOARD}_${OPENWRT_VER}_k${KERNEL_VERSION}${SUBVER}.img"
+TGT_IMG="${WORK_DIR}/openwrt_${SOC}_${BOARD}_${OPENWRT_VER}_k${KERNEL_VERSION}.img"
 
 # patches、scripts
 ####################################################################
@@ -44,7 +44,7 @@ KMOD="${PWD}/files/kmod"
 KMOD_BLACKLIST="${PWD}/files/kmod_blacklist"
 
 FIRSTRUN_SCRIPT="${PWD}/files/first_run.sh"
-DAEMON_JSON="${PWD}/files/rk3588/rock5b/daemon.json"
+DAEMON_JSON="${PWD}/files/rk3588/h88k-v3/daemon.json"
 
 TTYD="${PWD}/files/ttyd"
 FLIPPY="${PWD}/files/scripts_deprecated/flippy_cn"
@@ -68,7 +68,7 @@ SSL_CNF_PATCH="${PWD}/files/openssl_engine.patch"
 # 20201024 add
 BAL_ETH_IRQ="${PWD}/files/balethirq.pl"
 # 20201212 add
-BAL_CONFIG="${PWD}/files/rk3588/rock5b/balance_irq"
+BAL_CONFIG="${PWD}/files/rk3588/h88k-v3/balance_irq"
 
 # 20210307 add
 SS_LIB="${PWD}/files/ss-glibc/lib-glibc.tar.xz"
@@ -80,16 +80,16 @@ DOCKERD_PATCH="${PWD}/files/dockerd.patch"
 
 # 20200416 add
 FIRMWARE_TXZ="${PWD}/files/firmware_armbian.tar.xz"
-BOOTFILES_HOME="${PWD}/files/bootfiles/rockchip/rk3588/rock5b"
+BOOTFILES_HOME="${PWD}/files/bootfiles/rockchip/rk3588/h88k-v3"
 GET_RANDOM_MAC="${PWD}/files/get_random_mac.sh"
-BOOTLOADER_IMG="${PWD}/files/rk3588/rock5b/rk3588-rock5b-bootloader.bin"
+BOOTLOADER_IMG="${PWD}/files/rk3588/h88k/rk3588-h88k-bootloader.bin"
 
 # 20210618 add
 DOCKER_README="${PWD}/files/DockerReadme.pdf"
 
 # 20210704 add
 SYSINFO_SCRIPT="${PWD}/files/30-sysinfo.sh"
-FORCE_REBOOT="${PWD}/files/rk3588/rock5b/reboot"
+FORCE_REBOOT="${PWD}/files/rk3588/h88k-v3/reboot"
 
 # 20210923 add
 OPENWRT_KERNEL="${PWD}/files/openwrt-kernel"
@@ -103,9 +103,11 @@ DDBR="${PWD}/files/openwrt-ddbr"
 SSH_CIPHERS="aes256-gcm@openssh.com,aes128-gcm@openssh.com,chacha20-poly1305@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr"
 SSHD_CIPHERS="aes256-gcm@openssh.com,aes128-gcm@openssh.com,chacha20-poly1305@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr"
 # 20220906 add
-PWM_FAN="${PWD}/files/rk3588/rock5b/pwm-fan.pl"
+PWM_FAN="${PWD}/files/rk3588/h88k-v3/pwm-fan.pl"
 # 20221001 add
 MODULES_HOME="${PWD}/files/rk3588/modules.d"
+# 20221022
+BOARD_HOME="${PWD}/files/rk3588/h88k-v3/board.d"
 ####################################################################
 
 check_depends
