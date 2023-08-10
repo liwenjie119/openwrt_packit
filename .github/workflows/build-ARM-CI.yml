@@ -96,7 +96,7 @@ jobs:
         env:
           OPENWRT_ARMVIRT: openwrt-armvirt-64-generic-rootfs.tar.gz
           PACKAGE_SOC: s905d_s905x3
-          KERNEL_VERSION_NAME: 5.15.104_6.1.21
+          KERNEL_VERSION_NAME: 6.1.44
           KERNEL_AUTO_LATEST: true
           GZIP_IMGS: .gz
           WHOAMI: muxinghe
