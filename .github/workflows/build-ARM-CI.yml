@@ -81,6 +81,7 @@ jobs:
           if [ "${{github.event.inputs.ifmake}}" != "false" ]
           then
             cd lede
+            curl -o ./feeds/packages/multimedia/aliyundrive-webdav/Makefile https://raw.githubusercontent.com/coolsnowwolf/packages/aea60b5432fad984c0a4013bad0f0c5e00dcd115/multimedia/aliyundrive-webdav/Makefile
             make download -j8
             make -j$(nproc) || make -j1 V=s
             cp bin/targets/*/*/*.tar.gz ./../openwrt-armvirt-64-generic-rootfs.tar.gz
