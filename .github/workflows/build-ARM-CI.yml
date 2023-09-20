@@ -94,6 +94,7 @@ jobs:
             make -j$(nproc) || make -j1 V=s
             cp bin/targets/*/*/*.tar.gz ./../openwrt-armvirt-64-generic-rootfs.tar.gz
             cd ..
+            df -h
           else
             rootfs=$(wget -qO- -t1 -T2 "https://api.github.com/repos/liwenjie119/openwrt_packit/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g')
             wget https://github.com/liwenjie119/openwrt_packit/releases/download/$rootfs/openwrt-armvirt-64-generic-rootfs.tar.gz
