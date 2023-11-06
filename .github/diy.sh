@@ -11,7 +11,7 @@ git clone https://github.com/destan19/OpenAppFilter.git package/myapp/OpenAppFil
 #tar zxf ../.github/luci-app-cpufreq-modified.tar.gz -C package/lean
 #git clone https://github.com/tuanqing/install-program package/myapp/install-program
 # helloworld&&lienol
-sed -i '$a src-git helloworld https://github.com/fw876/helloworld' feeds.conf.default
+sed -i '$a src-git helloworld https://github.com/fw876/helloworld;main' feeds.conf.default
 #sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-ssr-mudb-server package/myapp/luci-app-ssr-mudb-server
 #svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt package/myapp/aliyundrive-webdav
