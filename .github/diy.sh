@@ -1,7 +1,18 @@
 #!/bin/bash
 
-
 cd lede
+
+function merge_package(){
+    repo=`echo $1 | rev | cut -d'/' -f 1 | rev`
+    pkg=`echo $2 | rev | cut -d'/' -f 1 | rev`
+    # find package/ -follow -name $pkg -not -path "package/custom/*" | xargs -rt rm -rf
+    git clone --depth=1 --single-branch $1
+    mv $2 package/myapp/
+    rm -rf $repo
+}
+rm -rf package/myapp; mkdir package/myapp
+
+
 git clone https://github.com/kongfl888/luci-app-adguardhome package/myapp/luci-app-adguardhome
 git clone https://github.com/2512500960/zzu-minieap-openwrt package/myapp/zzu-minieap-openwrt
 #git clone https://github.com/tty228/luci-app-serverchan package/myapp/luci-app-serverchan
@@ -13,10 +24,12 @@ git clone https://github.com/destan19/OpenAppFilter.git package/myapp/OpenAppFil
 # helloworld&&lienol
 sed -i '$a src-git helloworld https://github.com/fw876/helloworld;main' feeds.conf.default
 #sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
-svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-ssr-mudb-server package/myapp/luci-app-ssr-mudb-server
+#svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-ssr-mudb-server package/myapp/luci-app-ssr-mudb-server
+merge_package https://github.com/Lienol/openwrt-package openwrt-package/luci-app-ssr-mudb-server
 #svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt package/myapp/aliyundrive-webdav
 #晶晨宝盒
-svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
+#svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
+merge_package https://github.com/ophub/luci-app-amlogic luci-app-amlogic/luci-app-amlogic
 sed -i "s|https.*/OpenWrt|https://github.com/liwenjie119/openwrt_packit|g" package/luci-app-amlogic/root/etc/config/amlogic
 sed -i "s|ARMv8|arm|g" package/luci-app-amlogic/root/etc/config/amlogic
 sed -i "s|opt/kernel|https://github.com/breakings/OpenWrt/tree/main/opt/kernel|g" package/luci-app-amlogic/root/etc/config/amlogic
