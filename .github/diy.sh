@@ -49,6 +49,8 @@ git clone https://github.com/jerrykuku/luci-app-argon-config package/myapp/luci-
 #sed -i 's/luci-lib-ipkg/luci-base/g' package/feeds/helloworld/luci-app-ssr-plus/Makefile
 sed -i '/FEATURES+=/ { s/cpiogz //; s/ext4 //; s/ramdisk //; s/squashfs //; }' target/linux/armvirt/Makefile
 
+sed -i 's/stripped/release/g' feeds/packages/multimedia/aliyundrive-webdav/Makefile
+
 sed -i '$d' target/linux/armvirt/image/Makefile
 echo -e 'define Device/Phicomm-n1
 DEVICE_MODEL := Phicomm-n1
