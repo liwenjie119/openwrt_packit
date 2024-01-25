@@ -49,7 +49,9 @@ git clone https://github.com/jerrykuku/luci-app-argon-config package/myapp/luci-
 #sed -i 's/luci-lib-ipkg/luci-base/g' package/feeds/helloworld/luci-app-ssr-plus/Makefile
 sed -i '/FEATURES+=/ { s/cpiogz //; s/ext4 //; s/ramdisk //; s/squashfs //; }' target/linux/armvirt/Makefile
 
+#临时修改修复
 sed -i 's/stripped/release/g' feeds/packages/multimedia/aliyundrive-webdav/Makefile
+sed -i "70 s/$/ -D_LARGEFILE64_SOURCE/" feeds/packages/utils/xfsprogs/Makefile
 
 sed -i '$d' target/linux/armvirt/image/Makefile
 echo -e 'define Device/Phicomm-n1
