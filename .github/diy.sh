@@ -30,9 +30,9 @@ merge_package https://github.com/Lienol/openwrt-package openwrt-package/luci-app
 #晶晨宝盒
 #svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
 merge_package https://github.com/ophub/luci-app-amlogic luci-app-amlogic/luci-app-amlogic
-sed -i "s|https.*/OpenWrt|https://github.com/liwenjie119/openwrt_packit|g" package/luci-app-amlogic/root/etc/config/amlogic
-sed -i "s|ARMv8|arm|g" package/luci-app-amlogic/root/etc/config/amlogic
-sed -i "s|opt/kernel|https://github.com/breakings/OpenWrt/tree/main/opt/kernel|g" package/luci-app-amlogic/root/etc/config/amlogic
+sed -i "s|https.*/OpenWrt|https://github.com/liwenjie119/openwrt_packit|g" package/myapp/luci-app-amlogic/root/etc/config/amlogic
+sed -i "s|ARMv8|arm|g" package/myapp/luci-app-amlogic/root/etc/config/amlogic
+sed -i "s|opt/kernel|https://github.com/breakings/OpenWrt/tree/main/opt/kernel|g" package/myapp/luci-app-amlogic/root/etc/config/amlogic
 
 # replace antfs 
 sed -i 's/antfs-mount/ntfs-3g/g' ./package/lean/automount/Makefile
