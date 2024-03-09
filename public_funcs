@@ -1132,6 +1132,8 @@ SOC=${SOC}
 BOARD=${BOARD}
 KERNEL_VERSION=${KERNEL_VERSION}
 K510=${K510}
+KERNEL_TAGS='${KERNEL_TAGS}'
+KERNEL_BRANCHES='${KERNEL_BRANCHES}'
 EOF
 
         if [ -f "./etc/uci-defaults/99-default-settings" ] && [ -n "${DISTRIB_REVISION}" ] && [ -n "${DISTRIB_DESCRIPTION}" ];then
@@ -1152,9 +1154,10 @@ UBOOT_OVERLOAD=${UBOOT_WITHOUT_FIP}
 EOF
         fi
 
-	if [ "${SOC}" == "rk3588" ];then
+        if [ "${SOC}" == "rk3588" ];then
             echo "LOCK_KERNEL=${LOCK_KERNEL}" >> ./etc/flippy-openwrt-release
         fi
+
 
         # only photonic need pcat-manager service
         if [ "${BOARD}" != "photonicat" ];then
