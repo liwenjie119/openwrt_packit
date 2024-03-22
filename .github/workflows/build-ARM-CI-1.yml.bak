@@ -65,7 +65,7 @@ jobs:
           ./$CONFIG
 
       - name: Cache
-        uses: klever1988/cachewrtbuild@main
+        uses: stupidloud/cachewrtbuild@main
         with:
           ccache: 'true'
           toolchain: 'true'
