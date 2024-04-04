@@ -20,8 +20,8 @@ on:
       - '.github/n1.config'
       - '.github/diy.sh'
       - '.github/workflows/build-ARM-CI.yml'
-  schedule:
-    - cron: 0 0 * * 3,6
+  #schedule:
+  #  - cron: 0 0 * * 3,6
   watch:
     types: started
     
