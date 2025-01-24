@@ -64,3 +64,5 @@ cp ../.github/n1.config .config
 echo -e 'CONFIG_DEVEL=y\nCONFIG_CCACHE=y' >> .config; make defconfig
 
 
+./scripts/diffconfig.sh > seed1.config
+cat seed1.config

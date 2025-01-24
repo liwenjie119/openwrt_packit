@@ -124,8 +124,7 @@ jobs:
         run: |
           chmod 777 $CONFIG
           ./$CONFIG
-          ./scripts/diffconfig.sh > seed1.config
-          cat seed1.config
+
           
       - name: Cache
         uses: stupidloud/cachewrtbuild@main
