@@ -801,6 +801,11 @@ function extract_rootfs_files() {
        get_random_mac
        sed -e "s/macaddr=00:90:4c:c5:12:38/macaddr=${MACADDR}/" "brcmfmac43455-sdio.txt" > "brcmfmac43455-sdio.JP-TVbox,rk3566.txt"
        ln -s brcmfmac43455-sdio.bin brcmfmac43455-sdio.JP-TVbox,rk3566.bin
+
+       # Fine3399 采用 AP6236 wifi/bluetooth 模块
+       get_random_mac
+       ln -s brcmfmac43430b0-sdio.bin brcmfmac43430b0-sdio.rockchip,rk3399.bin
+       sed -e "s/macaddr=00:90:4c:c5:12:38/macaddr=${MACADDR}/" "brcmfmac43430b0-sdio.txt" > "brcmfmac43430b0-sdio.rockchip,rk3399.txt"
    )
    echo "完成"
 
