@@ -146,6 +146,7 @@ init_var() {
     [[ -n "${SCRIPT_BEIKEYUN}" ]] || SCRIPT_BEIKEYUN="${SCRIPT_BEIKEYUN_FILE}"
     [[ -n "${SCRIPT_L1PRO}" ]] || SCRIPT_L1PRO="${SCRIPT_L1PRO_FILE}"
     [[ -n "${SCRIPT_ZCUBE1MAX}" ]] || SCRIPT_ZCUBE1MAX="${SCRIPT_ZCUBE1MAX_FILE}"
+    [[ -n "${SCRIPT_FINE3399}" ]] || SCRIPT_FINE3399="${SCRIPT_FINE3399_FILE}"
     [[ -n "${SCRIPT_CM3}" ]] || SCRIPT_CM3="${SCRIPT_CM3_FILE}"
     [[ -n "${SCRIPT_HT2}" ]] || SCRIPT_HT2="${SCRIPT_HT2_FILE}"
     [[ -n "${SCRIPT_E20C}" ]] || SCRIPT_E20C="${SCRIPT_E20C_FILE}"
@@ -537,6 +538,7 @@ EOF
                         beikeyun)         [[ -f "${SCRIPT_BEIKEYUN}" ]]        && sudo ./${SCRIPT_BEIKEYUN} ;;
                         l1pro)            [[ -f "${SCRIPT_L1PRO}" ]]           && sudo ./${SCRIPT_L1PRO} ;;
                         zcube1-max)       [[ -f "${SCRIPT_ZCUBE1MAX}" ]]       && sudo ./${SCRIPT_ZCUBE1MAX} ;;
+                        fine3399)         [[ -f "${SCRIPT_FINE3399}" ]]        && sudo ./${SCRIPT_FINE3399} ;;
                         cm3)              [[ -f "${SCRIPT_CM3}" ]]             && sudo ./${SCRIPT_CM3} ;;
                         ak88)             [[ -f "${SCRIPT_H88K}" ]]            && sudo ./${SCRIPT_H88K} ;;
                         ht2)              [[ -f "${SCRIPT_HT2}" ]]             && sudo ./${SCRIPT_HT2} ;;
