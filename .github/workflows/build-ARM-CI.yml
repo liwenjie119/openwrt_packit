@@ -15,7 +15,7 @@ on:
         
   push:
     branches:
-      - master
+      - dev
     paths:
       - '.github/n1.config'
       - '.github/diy.sh'
@@ -39,73 +39,11 @@ jobs:
     timeout-minutes: 1000
     
     steps:
-      - name: Check Server Performance
-        run: |
-          echo "警告⚠"
-          echo "分配的服务器性能有限，若选择的插件过多，务必注意CPU性能！"
-          echo -e "已知CPU型号（降序）：7763，8370C，8272CL，8171M，E5-2673 \n"
-          echo "--------------------------CPU信息--------------------------"
-          echo "CPU物理数量：$(cat /proc/cpuinfo | grep "physical id" | sort | uniq | wc -l)"
-          echo -e "CPU核心信息：$(cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c) \n"
-          echo "--------------------------内存信息--------------------------"
-          echo "已安装内存详细信息："
-          echo -e "$(sudo lshw -short -C memory | grep GiB) \n"
-          echo "--------------------------硬盘信息--------------------------"
-          echo "硬盘数量：$(ls /dev/sd* | grep -v [1-9] | wc -l)" && df -hT
-          
-      - name: "Optimize Disk Space"
-        uses: "hugoalh/disk-space-optimizer-ghaction@v0.8.0"
-        with:
-          operate_sudo: "True"
-          general_include: ".+"
-          general_exclude: |-
-            ^GCC$
-            ^G\+\+$
-            Clang
-            LLVM
-          docker_include: ".+"
-          docker_prune: "True"
-          docker_clean: "True"
-          apt_prune: "True"
-          apt_clean: "True"
-          homebrew_prune: "True"
-          homebrew_clean: "True"
-          npm_prune: "True"
-          npm_clean: "True"
-          os_swap: "True"
-      
-      - name: Freeing up disk space
-        uses: easimon/maximize-build-space@master
-        with: 
-          root-reserve-mb: 24576
-          swap-size-mb: 2048
-          remove-dotnet: 'true'
-          remove-android: 'true'
-          remove-haskell: 'true'
-          remove-codeql: 'true'
-          remove-docker-images: 'true'
-          
-      - name: Free up disk space complete
-        run: |
-          echo "Free up disk space complete"
-          echo "=============================================================================="
-          df -hT
-          echo "=============================================================================="
-         
+     
       - name: Initialization environment
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
-          sudo -E apt update -y
-          sudo -E apt full-upgrade -y
-          sudo -E apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \
-          bzip2 ccache clang cmake cpio curl device-tree-compiler flex gawk gettext gcc-multilib g++-multilib \
-          git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libfuse-dev libglib2.0-dev libgmp3-dev \
-          libltdl-dev libmpc-dev libmpfr-dev libncurses-dev libncurses-dev libpython3-dev libreadline-dev \
-          libssl-dev libtool llvm lrzsz genisoimage msmtp ninja-build p7zip p7zip-full patch pkgconf python3 \
-          python3-pyelftools python3-setuptools qemu-utils rsync scons squashfs-tools subversion swig texinfo \
-          uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
-          sudo -E apt-get -y autoremove --purge
           sudo -E apt-get clean
           sudo timedatectl set-timezone "$TZ"
           sudo chown $USER:$GROUPS $GITHUB_WORKSPACE
@@ -157,7 +95,7 @@ jobs:
         if: steps.compile.outputs.status == 'success' && !cancelled()
         env:
           OPENWRT_ARMVIRT: openwrt-armvirt-64-generic-rootfs.tar.gz
-          PACKAGE_SOC: fine3399_s905d_s905x3
+          PACKAGE_SOC: fine3399
           KERNEL_VERSION_NAME: 6.6.72
           KERNEL_AUTO_LATEST: true
           #CUSTOMIZE_RK3399: rk3399-fine3399:rk3399-fine3399.dtb
