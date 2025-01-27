@@ -20,7 +20,7 @@
 #=============================== Set make environment variables ===============================
 #
 # Set the default package source download repository
-SCRIPT_REPO_URL_VALUE="https://github.com/liwenjie119/openwrt_packit"
+SCRIPT_REPO_URL_VALUE="https://github.com/QXY716/openwrt_packit"
 SCRIPT_REPO_BRANCH_VALUE="master"
 
 # Set the *rootfs.tar.gz package save name
@@ -49,10 +49,11 @@ PACKAGE_OPENWRT_6XY=("r66s" "r68s" "e25" "photonicat" "cm3" "rk3399")
 PACKAGE_SOC_VALUE="all"
 
 # Set the default packaged kernel download repository
-KERNEL_REPO_URL_VALUE="breakingbadboy/OpenWrt"
+KERNEL_REPO_URL_VALUE="QXY716/Kernel"
 # Set kernel tag: kernel_stable, kernel_rk3588, kernel_rk35xx
-KERNEL_TAGS=("stable" "rk3588" "rk35xx")
-STABLE_KERNEL=("6.1.y" "6.6.y")
+KERNEL_TAGS=("stable" "flippy" "rk3588" "rk35xx")
+STABLE_KERNEL=("6.1.y" "6.6.y" "5.15.y")
+FLIPPY_KERNEL=("6.1.y" "6.6.y" "5.15.y")
 RK3588_KERNEL=("5.10.y")
 RK35XX_KERNEL=("5.10.y")
 KERNEL_AUTO_LATEST_VALUE="true"
@@ -102,7 +103,7 @@ SCRIPT_RK3399_FILE="mk_rk3399_generic.sh"
 # Set make.env related parameters
 WHOAMI_VALUE="flippy"
 OPENWRT_VER_VALUE="auto"
-SW_FLOWOFFLOAD_VALUE="1"
+SW_FLOWOFFLOAD_VALUE="0"
 HW_FLOWOFFLOAD_VALUE="0"
 SFE_FLOW_VALUE="1"
 ENABLE_WIFI_K504_VALUE="1"
@@ -231,7 +232,7 @@ init_var() {
         elif [[ " ${PACKAGE_OPENWRT_RK35XX[@]} " =~ " ${kt} " ]]; then
             KERNEL_TAGS_TMP+=("rk35xx")
         else
-            KERNEL_TAGS_TMP+=("stable")
+            KERNEL_TAGS_TMP+=("flippy")
         fi
     done
     # Remove duplicate kernel tags
@@ -242,12 +243,12 @@ init_var() {
     echo -e "${INFO} Kernel tags: [ $(echo ${KERNEL_TAGS[@]} | xargs) ]"
 
     # Reset STABLE_KERNEL options
-    [[ -n "${KERNEL_VERSION_NAME}" && " ${KERNEL_TAGS[@]} " =~ " stable " ]] && {
+    [[ -n "${KERNEL_VERSION_NAME}" && " ${KERNEL_TAGS[@]} " =~ " flippy " ]] && {
         oldIFS="${IFS}"
         IFS="_"
         STABLE_KERNEL=(${KERNEL_VERSION_NAME})
         IFS="${oldIFS}"
-        echo -e "${INFO} Stable kernel: [ $(echo ${STABLE_KERNEL[@]} | xargs) ]"
+        echo -e "${INFO} flippy kernel: [ $(echo ${STABLE_KERNEL[@]} | xargs) ]"
     }
 
     # Convert kernel library address to api format
@@ -374,7 +375,7 @@ query_kernel() {
                 echo -e "${INFO} The latest version of the rk35xx kernel: [ ${RK35XX_KERNEL[@]} ]"
             else
                 STABLE_KERNEL=(${TMP_ARR_KERNELS[@]})
-                echo -e "${INFO} The latest version of the stable kernel: [ ${STABLE_KERNEL[@]} ]"
+                echo -e "${INFO} The latest version of the flippy kernel: [ ${STABLE_KERNEL[@]} ]"
             fi
 
             let x++
@@ -472,7 +473,7 @@ make_openwrt() {
                 vb="rk35xx"
             else
                 build_kernel=(${STABLE_KERNEL[@]})
-                vb="stable"
+                vb="flippy"
             fi
 
             k="1"
@@ -511,7 +512,7 @@ make_openwrt() {
                     [[ "${SW_FLOWOFFLOAD}" -eq "1" ]] && SFE_FLOW="0"
 
                     if [[ -n "${OPENWRT_VER}" && "${OPENWRT_VER}" == "auto" ]]; then
-                        OPENWRT_VER="$(cat make.env | grep "OPENWRT_VER=\"" | cut -d '"' -f2)"
+                        OPENWRT_VER="$(cat whoami | grep "OPENWRT_VER=\"" | cut -d '"' -f2)"
                         echo -e "${INFO} (${i}.${k}) OPENWRT_VER: [ ${OPENWRT_VER} ]"
                     fi
 
