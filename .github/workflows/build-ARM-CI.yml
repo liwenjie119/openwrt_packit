@@ -160,14 +160,14 @@ jobs:
           PACKAGE_SOC: s905d_s905x3_fine3399
           KERNEL_VERSION_NAME: 6.6.72
           KERNEL_AUTO_LATEST: true
-          CUSTOMIZE_RK3399: rk3399-fine3399:rk3399-fine3399.dtb
+          #CUSTOMIZE_RK3399: rk3399-fine3399:rk3399-fine3399.dtb
           GZIP_IMGS: .gz
           WHOAMI: muxinghe
         run: |
           sed -i -e "s@#FDT=/dtb/amlogic/meson-sm1-hk1box-vontar-x3-oc.dtb@FDT=/dtb/amlogic/meson-sm1-hk1box-vontar-x3-oc.dtb@g" mk_s905x3_multi.sh
           sed -i -e "s@FDT=/dtb/amlogic/meson-sm1-x96-max-plus-100m.dtb@#FDT=/dtb/amlogic/meson-sm1-x96-max-plus-100m.dtb@g" mk_s905x3_multi.sh
           bash openwrt_flippy.sh
-          bash mk_rk3399_fine3399.sh
+          
           
 
           
