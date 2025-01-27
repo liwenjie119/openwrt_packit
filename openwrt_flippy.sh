@@ -31,6 +31,7 @@ PACKAGE_OPENWRT=(
     "rock5b" "rock5c" "e52c" "ak88" "h88k" "h88k-v3"
     "r66s" "r68s" "e25" "photonicat" "cm3"
     "watermelon-pi" "zcube1-max" "jp-tvbox" "ht2" "e20c" "h28k" "h66k" "h68k" "h69k" "h69k-max"
+    "fine3399" "r08"
     "beikeyun" "l1pro"
     "vplus"
     "s922x" "s922x-n2" "s905x3" "s905x2" "s912" "s905d" "s905"
@@ -67,6 +68,7 @@ SCRIPT_VPLUS_FILE="mk_h6_vplus.sh"
 SCRIPT_BEIKEYUN_FILE="mk_rk3328_beikeyun.sh"
 SCRIPT_L1PRO_FILE="mk_rk3328_l1pro.sh"
 SCRIPT_ZCUBE1MAX_FILE="mk_rk3399_zcube1-max.sh"
+SCRIPT_FINE3399_FILE="mk_rk3399_fine3399.sh"
 SCRIPT_CM3_FILE="mk_rk3566_radxa-cm3-rpi-cm4-io.sh"
 SCRIPT_HT2_FILE="mk_rk3528_ht2.sh"
 SCRIPT_E20C_FILE="mk_rk3528_e20c.sh"
@@ -77,6 +79,7 @@ SCRIPT_H69K_FILE="mk_rk3568_h69k.sh"
 SCRIPT_H88K_FILE="mk_rk3588_h88k.sh"
 SCRIPT_H88KV3_FILE="mk_rk3588_h88k-v3.sh"
 SCRIPT_JPTVBOX_FILE="mk_rk3566_jp-tvbox.sh"
+SCRIPT_R08_FILE="mk_rk3399_r08.sh"
 SCRIPT_R66S_FILE="mk_rk3568_r66s.sh"
 SCRIPT_R68S_FILE="mk_rk3568_r68s.sh"
 SCRIPT_E25_FILE="mk_rk3568_e25.sh"
@@ -157,6 +160,7 @@ init_var() {
     [[ -n "${SCRIPT_H88K}" ]] || SCRIPT_H88K="${SCRIPT_H88K_FILE}"
     [[ -n "${SCRIPT_H88KV3}" ]] || SCRIPT_H88KV3="${SCRIPT_H88KV3_FILE}"
     [[ -n "${SCRIPT_JPTVBOX}" ]] || SCRIPT_JPTVBOX="${SCRIPT_JPTVBOX_FILE}"
+    [[ -n "${SCRIPT_R08}" ]] || SCRIPT_R08="${SCRIPT_R08_FILE}"
     [[ -n "${SCRIPT_R66S}" ]] || SCRIPT_R66S="${SCRIPT_R66S_FILE}"
     [[ -n "${SCRIPT_R68S}" ]] || SCRIPT_R68S="${SCRIPT_R68S_FILE}"
     [[ -n "${SCRIPT_E25}" ]] || SCRIPT_E25="${SCRIPT_E25_FILE}"
@@ -551,6 +555,7 @@ EOF
                         h69k)             [[ -f "${SCRIPT_H69K}" ]]            && sudo ./${SCRIPT_H69K} ;;
                         h69k-max)         [[ -f "${SCRIPT_H69K}" ]]            && sudo ./${SCRIPT_H69K} "max" ;;
                         jp-tvbox)         [[ -f "${SCRIPT_JPTVBOX}" ]]         && sudo ./${SCRIPT_JPTVBOX} ;;
+                        r08)              [[ -f "${SCRIPT_R08}" ]]             && sudo ./${SCRIPT_R08} ;;
                         r66s)             [[ -f "${SCRIPT_R66S}" ]]            && sudo ./${SCRIPT_R66S} ;;
                         r68s)             [[ -f "${SCRIPT_R68S}" ]]            && sudo ./${SCRIPT_R68S} ;;
                         rock5b)           [[ -f "${SCRIPT_ROCK5B}" ]]          && sudo ./${SCRIPT_ROCK5B} ;;
