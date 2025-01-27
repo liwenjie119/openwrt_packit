@@ -25,7 +25,7 @@ sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.
 merge_package https://github.com/ophub/luci-app-amlogic luci-app-amlogic/luci-app-amlogic
 sed -i "s|https.*/OpenWrt|https://github.com/liwenjie119/openwrt_packit|g" package/myapp/luci-app-amlogic/root/etc/config/amlogic
 sed -i "s|ARMv8|arm|g" package/myapp/luci-app-amlogic/root/etc/config/amlogic
-sed -i "s|opt/kernel|https://github.com/breakings/OpenWrt/tree/main/opt/kernel|g" package/myapp/luci-app-amlogic/root/etc/config/amlogic
+sed -i "s|opt/kernel|https://github.com/breakingbadboy/OpenWrt/tree/main/opt/kernel|g" package/myapp/luci-app-amlogic/root/etc/config/amlogic
 
 
 
