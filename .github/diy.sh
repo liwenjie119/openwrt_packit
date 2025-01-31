@@ -34,10 +34,10 @@ sed -i "s|opt/kernel|https://github.com/breakingbadboy/OpenWrt/tree/main/opt/ker
 sed -i '/FEATURES+=/ { s/cpiogz //; s/ext4 //; s/ramdisk //; s/squashfs //; }' target/linux/armvirt/Makefile
 
 #临时替换shadowsocksr-libev
-rm -rf feeds/helloworld/shadowsocksr-libev
-git clone https://github.com/sbwml/openwrt_helloworld
-mv openwrt_helloworld/shadowsocksr-libev feeds/helloworld/shadowsocksr-libev
-rm -rf openwrt_helloworld
+#rm -rf feeds/helloworld/shadowsocksr-libev
+#git clone https://github.com/sbwml/openwrt_helloworld
+#mv openwrt_helloworld/shadowsocksr-libev feeds/helloworld/shadowsocksr-libev
+#rm -rf openwrt_helloworld
 
 #临时修改修复
 sed -i 's/stripped/release/g' feeds/packages/multimedia/aliyundrive-webdav/Makefile
