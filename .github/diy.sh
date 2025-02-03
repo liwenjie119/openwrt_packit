@@ -18,7 +18,7 @@ git clone https://github.com/yaof2/luci-app-ikoolproxy package/myapp/luci-app-ik
 git clone https://github.com/destan19/OpenAppFilter.git package/myapp/OpenAppFilter
 # helloworld&&lienol
 sed -i '$a src-git helloworld https://github.com/fw876/helloworld;main' feeds.conf.default
-sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
+#sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 
 
 #晶晨宝盒
