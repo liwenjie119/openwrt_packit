@@ -38,6 +38,8 @@ sed -i '/FEATURES+=/ { s/cpiogz //; s/ext4 //; s/ramdisk //; s/squashfs //; }' t
 #git clone https://github.com/sbwml/openwrt_helloworld
 #mv openwrt_helloworld/shadowsocksr-libev feeds/helloworld/shadowsocksr-libev
 #rm -rf openwrt_helloworld
+rm -rf feeds/helloworld/shadowsocksr-libev/Makefile
+wget https://raw.githubusercontent.com/zxlhhyccc/helloworld/refs/heads/ssr/shadowsocksr-libev/Makefile -o feeds/helloworld/shadowsocksr-libev/Makefile
 
 #临时修改修复
 #sed -i 's/stripped/release/g' feeds/packages/multimedia/aliyundrive-webdav/Makefile
